@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#17131f">
-<title>🚀 Minik Kaşifler V3</title>
+<title>🚀 Minik Kaşifler V4</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#0b0a0d;color:#fff;font-family:system-ui,-apple-system,Segoe UI,sans-serif}
 .app{max-width:760px;margin:auto;min-height:100vh;padding:14px 14px 95px}
@@ -33,7 +33,7 @@ nav button{background:transparent;padding:9px 4px;font-size:12px}.active{backgro
 <div id="app" class="app"></div>
 <nav id="nav"></nav>
 <script>
-const KEY="minikKasiflerV3";
+const KEY="minikKasiflerV4";
 let state=JSON.parse(localStorage.getItem(KEY)||'{"stars":0,"completed":0,"minutes":0,"games":0,"story":0,"profile":"Belinay","profiles":["Belinay","Hazal","Elisa","Nare"],"badges":[]}');
 const save=()=>localStorage.setItem(KEY,JSON.stringify(state));
 const app=document.getElementById("app"), nav=document.getElementById("nav");
@@ -74,7 +74,7 @@ function home(){layout("",`
 <div class="route" onclick="play('color')"><span class="emoji">🌈</span><strong>Renkleri Keşfet</strong><span class="muted">3 kısa soru + mini görev</span></div>
 <div class="section">📖 Yeni hikâye <span class="badge">Tümü</span></div>
 <div class="story" onclick="story(0)"><span class="emoji">⭐</span><strong>Minik Kaşif ve Kayıp Yıldız</strong><span class="muted">Sesli hikâye · 4–6 yaş · 4 dk</span></div>`)}
-function gamesPage(){layout("",`<div class="section">🎮 Oyunlar <span class="muted">20 oyun · Doğru cevap = ⭐</span></div><div class="cards">${games.map(g=>`<div class="card" onclick="play('${g.id}')"><div class="bigemoji">${g.icon}</div><b>${g.name}</b><span class="muted">${g.desc}</span><br><span class="badge">Kolay</span></div>`).join("")}</div>`)}
+function gamesPage(){layout("",`<div class="section">🎮 Oyunlar <span class="muted">20 Mini Oyun · Doğru cevap = ⭐</span></div><div class="cards">${games.map((g,n)=>`<div class="card" onclick="play('${g.id}')"><span class="badge">${n+1}/20</span><div class="bigemoji">${g.icon}</div><b>${g.name}</b><span class="muted">${g.desc}</span><br><span class="badge">Kolay</span></div>`).join("")}</div>`)}
 function play(id){
  let game=games.find(x=>x.id===id), i=0, score=0;
  const variants={

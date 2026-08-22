@@ -1,4 +1,4 @@
-Minik Kaşifler V3
-20 mini oyun, 4 çocuk profili, yıldız/rozet sistemi, hikayeler ve ebeveyn alanı.
+Minik Kaşifler V4
+20 oynanabilir mini oyun, 4 çocuk profili, yıldız/rozet sistemi, hikayeler ve ebeveyn alanı.
+ÖNEMLİ: Eski V2/V3 önbelleğini temizleyip sayfayı yenileyin.
 Varsayılan ebeveyn PIN: 1234
-GitHub Pages için tüm dosyaları depo köküne yükleyin.
