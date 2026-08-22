@@ -1,6 +1,4 @@
-Minik Kaşifler v2
-- 6 oynanabilir mini oyun
-- Yıldız/ilerleme sistemi (localStorage)
-- 3 hikâye ve Türkçe sesli okuma
-- Ebeveyn alanı (PIN: 1234)
-- PWA manifest + offline service worker
+Minik Kaşifler V3
+20 mini oyun, 4 çocuk profili, yıldız/rozet sistemi, hikayeler ve ebeveyn alanı.
+Varsayılan ebeveyn PIN: 1234
+GitHub Pages için tüm dosyaları depo köküne yükleyin.

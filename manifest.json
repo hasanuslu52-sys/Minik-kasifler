@@ -1,9 +1,9 @@
 {
-  "name":"Minik Kaşifler",
-  "short_name":"Minik Kaşifler",
-  "start_url":"./index.html",
-  "display":"standalone",
-  "background_color":"#0b0a0d",
-  "theme_color":"#17131f",
-  "lang":"tr"
+  "name": "Minik Kaşifler V3",
+  "short_name": "Minik Kaşifler",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b0a0d",
+  "theme_color": "#17131f",
+  "lang": "tr"
 }

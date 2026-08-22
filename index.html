@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#17131f">
-<title>🚀 Minik Kaşifler</title>
+<title>🚀 Minik Kaşifler V3</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#0b0a0d;color:#fff;font-family:system-ui,-apple-system,Segoe UI,sans-serif}
 .app{max-width:760px;margin:auto;min-height:100vh;padding:14px 14px 95px}
@@ -33,17 +33,31 @@ nav button{background:transparent;padding:9px 4px;font-size:12px}.active{backgro
 <div id="app" class="app"></div>
 <nav id="nav"></nav>
 <script>
-const KEY="minikKasiflerV2";
-let state=JSON.parse(localStorage.getItem(KEY)||'{"stars":0,"completed":0,"minutes":0,"games":0,"story":0}');
+const KEY="minikKasiflerV3";
+let state=JSON.parse(localStorage.getItem(KEY)||'{"stars":0,"completed":0,"minutes":0,"games":0,"story":0,"profile":"Belinay","profiles":["Belinay","Hazal","Elisa","Nare"],"badges":[]}');
 const save=()=>localStorage.setItem(KEY,JSON.stringify(state));
 const app=document.getElementById("app"), nav=document.getElementById("nav");
 const games=[
- {id:"color",icon:"🎨",name:"Rengi Bul",desc:"Doğru rengi seç.",q:"Hangisi kırmızı?",a:["🔴 Kırmızı","🔵 Mavi","🟢 Yeşil","🟡 Sarı"],ok:0},
- {id:"number",icon:"🔢",name:"Sayıyı Bul",desc:"Kaç tane var?",q:"🍎🍎🍎 kaç tane?",a:["2","3","4","5"],ok:1},
- {id:"shape",icon:"🔷",name:"Şekli Bul",desc:"Doğru şekli seç.",q:"Hangisi üçgen?",a:["🔵","🔺","🟩","⭐"],ok:1},
- {id:"animal",icon:"🐾",name:"Hayvanı Bul",desc:"Hangi hayvan?",q:"Hangisi bir kedi?",a:["🐶","🐱","🐰","🦁"],ok:1},
- {id:"fruit",icon:"🍎",name:"Meyveleri Say",desc:"Kaç meyve görüyorsun?",q:"🍎🍐🍎🍌 kaç meyve?",a:["2","3","4","5"],ok:2},
- {id:"opposite",icon:"↕️",name:"Zıt Kavramlar",desc:"Büyüğü ve küçüğü bul.",q:"Hangisi büyük?",a:["🐭","🐘","🐜","🐞"],ok:1}
+{id:"color",icon:"🎨",name:"Rengi Bul",desc:"Doğru rengi seç.",q:"Hangisi kırmızı?",a:["🔴","🔵","🟢","🟡"],ok:0},
+{id:"number",icon:"🔢",name:"Sayıyı Bul",desc:"Kaç tane var?",q:"🍎🍎🍎 kaç tane?",a:["2","3","4","5"],ok:1},
+{id:"shape",icon:"🔷",name:"Şekli Bul",desc:"Doğru şekli seç.",q:"Hangisi üçgen?",a:["🔵","🔺","🟩","⭐"],ok:1},
+{id:"animal",icon:"🐾",name:"Hayvanı Bul",desc:"Doğru hayvanı seç.",q:"Hangisi bir kedi?",a:["🐶","🐱","🐰","🦁"],ok:1},
+{id:"fruit",icon:"🍎",name:"Meyveleri Say",desc:"Meyveleri say.",q:"🍎🍐🍎🍌 kaç meyve?",a:["2","3","4","5"],ok:2},
+{id:"opposite",icon:"↕️",name:"Zıt Kavramlar",desc:"Büyük-küçük, uzun-kısa.",q:"Hangisi büyük?",a:["🐭","🐘","🐜","🐞"],ok:1},
+{id:"color2",icon:"🌈",name:"Renk Eşleştir",desc:"Aynı rengi bul.",q:"🟢 ile aynı olan hangisi?",a:["🔴","🟢","🔵","🟡"],ok:1},
+{id:"memory",icon:"🧠",name:"Hafıza Kartları",desc:"Doğru çifti bul.",q:"Hangisi elma?",a:["🍎","🐶","🚗","⭐"],ok:0},
+{id:"vehicle",icon:"🚗",name:"Taşıtı Bul",desc:"Taşıtları tanı.",q:"Hangisi bir taşıt?",a:["🚗","🍎","🐱","🌳"],ok:0},
+{id:"nature",icon:"🌳",name:"Doğayı Bul",desc:"Doğadaki şeyi seç.",q:"Hangisi doğada yetişir?",a:["🌳","📱","🚲","🧸"],ok:0},
+{id:"food",icon:"🥕",name:"Sağlıklı Seç",desc:"Sağlıklı yiyeceği bul.",q:"Hangisi sebzedir?",a:["🍭","🥕","🍫","🍪"],ok:1},
+{id:"animalhome",icon:"🏠",name:"Hayvanın Evi",desc:"Hayvanı yuvasıyla eşleştir.",q:"Kuş nerede yaşar?",a:["🪹","🚗","🛁","🎒"],ok:0},
+{id:"countstars",icon:"⭐",name:"Yıldızları Say",desc:"Yıldızları say.",q:"⭐ ⭐ ⭐ ⭐ kaç yıldız?",a:["2","3","4","5"],ok:2},
+{id:"weather",icon:"☀️",name:"Hava Durumu",desc:"Havayı tanı.",q:"Yağmur yağarken hangisini kullanırız?",a:["☂️","🕶️","🏖️","🎈"],ok:0},
+{id:"letters",icon:"🔤",name:"Harf Avı",desc:"Doğru harfi bul.",q:"ELMA kelimesi hangi harfle başlar?",a:["A","E","M","L"],ok:1},
+{id:"colors3",icon:"🖍️",name:"Renk Karıştır",desc:"Renkleri öğren.",q:"Sarı ile mavi karışınca hangi renk oluşur?",a:["Yeşil","Pembe","Turuncu","Mor"],ok:0},
+{id:"seasons",icon:"🍂",name:"Mevsimi Bul",desc:"Mevsimleri öğren.",q:"Kar genellikle hangi mevsimde yağar?",a:["Yaz","Kış","İlkbahar","Sonbahar"],ok:1},
+{id:"body",icon:"👀",name:"Vücudumu Tanıyorum",desc:"Vücut bölümlerini öğren.",q:"Görmek için hangisini kullanırız?",a:["👂","👀","👃","🖐️"],ok:1},
+{id:"logic",icon:"🧩",name:"Hangisi Farklı?",desc:"Farklı olanı bul.",q:"Hangisi diğerlerinden farklı?",a:["🍎","🍐","🍌","🚗"],ok:3},
+{id:"direction",icon:"⬆️",name:"Yönleri Öğren",desc:"Yönleri tanı.",q:"Yukarıyı gösteren hangisi?",a:["⬇️","⬅️","⬆️","➡️"],ok:2}
 ];
 const stories=[
  {icon:"⭐",name:"Minik Kaşif ve Kayıp Yıldız",age:"4–6 yaş",text:"Minik Kaşif gökyüzünde parlayan küçük bir yıldız gördü. Yıldız yolunu kaybetmişti. Kaşif onu gökyüzüne geri götürmek için renkli bir maceraya çıktı. Önce gökkuşağının altından geçti, sonra ay ışığını takip etti. Yıldız yerine kavuşunca gökyüzü ışıl ışıl oldu. Minik Kaşif gülümsedi: Her küçük yardım büyük bir mutluluk getirir."},
@@ -56,23 +70,66 @@ function layout(title,content){app.innerHTML=`<header><span>🚀 Minik Kaşifler
 function home(){layout("",`
 <section class="hero"><small>2–8 yaş · Güvenli keşif dünyası</small><h1>Keşfet · Öğren · Eğlen!</h1><p>Her gün küçük bir görev, eğlenceli bir oyun ve sıcacık bir hikâye.</p><button class="primary" onclick="daily()">⭐ Bugünün keşfine başla</button></section>
 <div class="cards"><div class="card"><b>${state.stars}</b><span class="muted">Topladığın yıldız</span></div><div class="card"><b>${state.completed}</b><span class="muted">Tamamlanan keşif</span></div></div>
-<div class="section">🎯 Bugünün rotası <span class="muted">10–15 dk</span></div>
+<div class="route" onclick="profilePage()"><span class="emoji">👧</span><strong>${state.profile} ile devam et</strong><span class="muted">Çocuk profilini değiştir</span></div><div class="section">🎯 Bugünün rotası <span class="muted">10–15 dk</span></div>
 <div class="route" onclick="play('color')"><span class="emoji">🌈</span><strong>Renkleri Keşfet</strong><span class="muted">3 kısa soru + mini görev</span></div>
 <div class="section">📖 Yeni hikâye <span class="badge">Tümü</span></div>
 <div class="story" onclick="story(0)"><span class="emoji">⭐</span><strong>Minik Kaşif ve Kayıp Yıldız</strong><span class="muted">Sesli hikâye · 4–6 yaş · 4 dk</span></div>`)}
-function gamesPage(){layout("",`<div class="section">🎮 Oyunlar <span class="muted">Doğru cevap = ⭐</span></div><div class="cards">${games.map(g=>`<div class="card" onclick="play('${g.id}')"><div class="bigemoji">${g.icon}</div><b>${g.name}</b><span class="muted">${g.desc}</span><br><span class="badge">Kolay</span></div>`).join("")}</div>`)}
-function play(id){let g=games.find(x=>x.id===id);let i=0,score=0;
-function render(){app.innerHTML=`<header><span>🚀 Minik Kaşifler</span><span class="stars">⭐ ${state.stars}</span></header><button class="back" onclick="gamesPage()">← Oyunlara dön</button><div class="gamebox"><div class="muted">Soru ${i+1} / 3</div><div class="progress"><i style="width:${(i/3)*100}%"></i></div><div class="bigemoji">${g.icon}</div><div class="question">${g.q}</div><div class="answers">${g.a.map((x,n)=>`<button class="answer" onclick="answer(${n})">${x}</button>`).join("")}</div><div id="feedback" class="feedback"></div></div>`}
-window.answer=(n)=>{let f=document.getElementById("feedback"); if(n===g.ok){score++;state.stars++;save();f.textContent="🎉 Harika! +1 yıldız";f.style.color="#ffd84d"}else{f.textContent="💡 Bir daha düşün!";}setTimeout(()=>{i++;if(i>=3){state.completed++;state.games++;save();finish(score)}else{g={...g,q:variants(g.id,i).q,a:variants(g.id,i).a,ok:variants(g.id,i).ok};render()}},700)}
-function variants(id,i){const base=games.find(x=>x.id===id);const v={color:[["Hangisi sarı?",["🔴","🔵","🟢","🟡"],3],["Hangisi mavi?",["🟢","🔵","🟡","🔴"],1]],number:[["🍎🍎 kaç tane?",["1","2","3","4"],1],["🍓🍓🍓🍓 kaç tane?",["2","3","4","5"],2]],shape:[["Hangisi daire?",["🔺","🟩","🔵","⭐"],2],["Hangisi kare?",["🔵","🔺","🟩","⭐"],2]],animal:[["Hangisi tavşan?",["🐶","🐱","🐰","🦁"],2],["Hangisi köpek?",["🐶","🐱","🐰","🐭"],0]],fruit:[["🍎🍎🍐 kaç meyve?",["2","3","4","5"],1],["🍌🍌🍎🍐🍊 kaç meyve?",["3","4","5","6"],2]],opposite:[["Hangisi küçük?",["🐘","🐭","🦒","🐋"],1],["Hangisi uzun?",["🐜","🦒","🐭","🐞"],1]]};let x=v[id][i-1]||[base.q,base.a,base.ok];return {q:x[0],a:x[1],ok:x[2]}}
-function finish(score){app.innerHTML=`<header><span>🚀 Minik Kaşifler</span><span class="stars">⭐ ${state.stars}</span></header><div class="gamebox" style="text-align:center"><div class="bigemoji">🏆</div><h1>Harika iş!</h1><p>${score}/3 doğru cevap verdin.</p><p>⭐ ${score} yıldız kazandın!</p><button class="primary" onclick="gamesPage()">🎮 Başka oyun oyna</button><br><br><button onclick="home()">🏠 Ana Sayfa</button></div>`}
+function gamesPage(){layout("",`<div class="section">🎮 Oyunlar <span class="muted">20 oyun · Doğru cevap = ⭐</span></div><div class="cards">${games.map(g=>`<div class="card" onclick="play('${g.id}')"><div class="bigemoji">${g.icon}</div><b>${g.name}</b><span class="muted">${g.desc}</span><br><span class="badge">Kolay</span></div>`).join("")}</div>`)}
+function play(id){
+ let game=games.find(x=>x.id===id), i=0, score=0;
+ const variants={
+  color:[["Hangisi sarı?",["🔴","🔵","🟢","🟡"],3],["Hangisi mavi?",["🟢","🔵","🟡","🔴"],1]],
+  number:[["🍎🍎 kaç tane?",["1","2","3","4"],1],["🍓🍓🍓🍓 kaç tane?",["2","3","4","5"],2]],
+  shape:[["Hangisi daire?",["🔺","🟩","🔵","⭐"],2],["Hangisi kare?",["🔵","🔺","🟩","⭐"],2]],
+  animal:[["Hangisi tavşan?",["🐶","🐱","🐰","🦁"],2],["Hangisi köpek?",["🐶","🐱","🐰","🐭"],0]],
+  fruit:[["🍎🍎🍐 kaç meyve?",["2","3","4","5"],1],["🍌🍌🍎🍐🍊 kaç meyve?",["3","4","5","6"],2]]
+ };
+ const getQ=()=>{let v=variants[game.id]; if(v && i>0){let x=v[i-1]; return {q:x[0],a:x[1],ok:x[2]};} return {q:game.q,a:game.a,ok:game.ok};};
+ function render(){
+  const x=getQ();
+  app.innerHTML=`<header><span>🚀 Minik Kaşifler</span><span class="stars">⭐ ${state.stars}</span></header>
+  <button class="back" onclick="gamesPage()">← Oyunlara dön</button>
+  <div class="gamebox"><div class="muted">Soru ${i+1} / 3</div>
+  <div class="progress"><i style="width:${(i/3)*100}%"></i></div>
+  <div class="bigemoji">${game.icon}</div><div class="question">${x.q}</div>
+  <div class="answers">${x.a.map((a,n)=>`<button class="answer" onclick="answer(${n})">${a}</button>`).join("")}</div>
+  <div id="feedback" class="feedback"></div></div>`;
+ }
+ window.answer=(n)=>{
+  const x=getQ(), f=document.getElementById("feedback");
+  if(n===x.ok){score++;state.stars++;f.textContent="🎉 Harika! +1 yıldız";f.style.color="#ffd84d";}
+  else f.textContent="💡 Bir daha düşün!";
+  save();
+  setTimeout(()=>{i++; if(i>=3){state.completed++;state.games++;addBadge();save();finish(score)} else render();},650);
+ };
+ function addBadge(){
+   if(score===3 && !state.badges.includes("🏆 Usta Kaşif")) state.badges.push("🏆 Usta Kaşif");
+   if(state.completed>=10 && !state.badges.includes("🌟 10 Keşif")) state.badges.push("🌟 10 Keşif");
+ }
+ render();
+}
+function finish(score){
+ app.innerHTML=`<header><span>🚀 Minik Kaşifler</span><span class="stars">⭐ ${state.stars}</span></header>
+ <div class="gamebox" style="text-align:center"><div class="bigemoji">🏆</div>
+ <h1>Harika iş, ${state.profile}!</h1><p>${score}/3 doğru cevap verdin.</p>
+ <p>⭐ ${score} yıldız kazandın!</p>
+ <p>${score===3?"🎖️ Mükemmel!":"👏 Bir sonraki oyunda daha da iyisini yapabilirsin."}</p>
+ <button class="primary" onclick="gamesPage()">🎮 Başka oyun oyna</button><br><br><button onclick="home()">🏠 Ana Sayfa</button></div>`;
+}
 function storiesPage(){layout("",`<div class="section">📚 Hikâyeler <span class="muted">Oku veya dinle</span></div><div class="list">${stories.map((s,i)=>`<div class="story" onclick="story(${i})"><span class="emoji">${s.icon}</span><strong>${s.name}</strong><span class="muted">${s.age} · 4 dk</span></div>`).join("")}</div>`)}
 function story(i){let s=stories[i];layout("",`<button class="back" onclick="storiesPage()">← Hikâyelere dön</button><div class="storybox"><div class="bigemoji">${s.icon}</div><h2>${s.name}</h2><span class="badge">${s.age}</span><p style="font-size:18px;line-height:1.7">${s.text}</p><button class="primary" onclick="speakStory()">🔊 Sesli dinle</button><br><br><button onclick="finishStory()">⭐ Hikâyeyi tamamladım</button></div>`);
 window.speakStory=()=>{if("speechSynthesis" in window){speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(s.text);u.lang="tr-TR";u.rate=.9;speechSynthesis.speak(u)}};
 window.finishStory=()=>{state.stars++;state.story++;state.completed++;save();alert("⭐ Hikâye tamamlandı! 1 yıldız kazandın.");storiesPage()}}
+function profilePage(){
+ layout("",`<div class="section">👧 Çocuk Profili</div>
+ <div class="parentbox"><p class="muted">Oyuncuyu seç:</p>
+ <div class="cards">${state.profiles.map((p,i)=>`<div class="card" onclick="selectProfile('${p}')"><div class="bigemoji">${["👧","👧","👧","👶"][i]}</div><b>${p}</b><span class="muted">${p===state.profile?"⭐ Aktif profil":""}</span></div>`).join("")}</div>
+ <br><button onclick="parentPage()">👨‍👩‍👧 Ebeveyn alanı</button></div>`);
+}
+function selectProfile(p){state.profile=p;save();home();}
 function parentPage(){let ok=sessionStorage.getItem("parentOK");if(!ok){layout("",`<div class="parentbox pin"><h2>🔒 Ebeveyn Alanı</h2><p class="muted">Devam etmek için PIN girin.</p><input id="pin" type="password" inputmode="numeric" maxlength="4" placeholder="••••"><br><br><button class="primary" onclick="checkPin()">Giriş</button><p class="muted">Varsayılan PIN: 1234</p></div>`);return}
-layout("",`<div class="section">👨‍👩‍👧 Ebeveyn Alanı</div><div class="parentbox"><p class="muted">Bugünkü kullanım</p><h2>${state.minutes} dk</h2><div class="progress"><i style="width:${Math.min(100,state.minutes/20*100)}%"></i></div><p class="muted">Önerilen günlük süre: 20 dk</p><div class="stat"><div class="card">⭐<b>${state.stars}</b><span class="muted">Yıldız</span></div><div class="card">🎯<b>${state.completed}</b><span class="muted">Keşif</span></div></div><br><button onclick="resetProgress()">İlerlemeyi sıfırla</button></div>`)}
-function checkPin(){if(document.getElementById("pin").value==="1234"){sessionStorage.setItem("parentOK","1");parentPage()}else alert("PIN yanlış.")}function resetProgress(){if(confirm("Tüm ilerleme silinsin mi?")){state={stars:0,completed:0,minutes:0,games:0,story:0};save();parentPage()}}
+layout("",`<div class="section">👨‍👩‍👧 Ebeveyn Alanı</div><div class="parentbox"><p class="muted">Bugünkü kullanım</p><h2>${state.minutes} dk</h2><div class="progress"><i style="width:${Math.min(100,state.minutes/20*100)}%"></i></div><p class="muted">Önerilen günlük süre: 20 dk</p><div class="stat"><div class="card">⭐<b>${state.stars}</b><span class="muted">Yıldız</span></div><div class="card">🎯<b>${state.completed}</b><span class="muted">Keşif</span></div></div><p class="muted">Aktif profil: ${state.profile}</p><p>${state.badges.length?state.badges.join(" · "):"Henüz rozet yok"}</p><br><button onclick="profilePage()">👧 Profili değiştir</button><br><br><button onclick="resetProgress()">İlerlemeyi sıfırla</button></div>`)}
+function checkPin(){if(document.getElementById("pin").value==="1234"){sessionStorage.setItem("parentOK","1");parentPage()}else alert("PIN yanlış.")}function resetProgress(){if(confirm("Tüm ilerleme silinsin mi?")){state={stars:0,completed:0,minutes:0,games:0,story:0,profile:"Belinay",profiles:["Belinay","Hazal","Elisa","Nare"],badges:[]};save();parentPage()}}
 function daily(){play("color")}
 home();
 </script>
