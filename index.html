@@ -4,133 +4,184 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#17131f">
-<title>🚀 Minik Kaşifler V4</title>
+<link rel="manifest" href="manifest.json">
+<title>🚀 Minik Kaşifler</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#0b0a0d;color:#fff;font-family:system-ui,-apple-system,Segoe UI,sans-serif}
-.app{max-width:760px;margin:auto;min-height:100vh;padding:14px 14px 95px}
-header{display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:18px;margin:5px 0 16px}
-.stars{border:1px solid #4a4356;border-radius:22px;padding:7px 12px;background:#141118}
-.hero{background:linear-gradient(135deg,#30274b,#473b79);border:1px solid #8172aa;border-radius:20px;padding:18px;margin-bottom:12px}
-.hero small{color:#d9d2ec}.hero h1{font-size:25px;margin:6px 0}.hero p{color:#ddd5e8;margin:4px 0 14px}
-button{border:0;color:#fff;background:#43358c;border-radius:13px;padding:12px 16px;font-weight:800;cursor:pointer}
-.primary{width:100%;background:#4a3bb0}.cards{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:10px 0 18px}
-.card{border:1px solid #302b35;background:#0d0c0f;border-radius:16px;padding:15px;cursor:pointer}.card:active{transform:scale(.98)}
-.section{display:flex;justify-content:space-between;align-items:center;margin:18px 3px 8px;font-weight:800}.muted{color:#aaa;font-size:13px}
-.route,.story{border:1px solid #302b35;background:#0d0c0f;border-radius:16px;padding:14px;margin-bottom:9px;cursor:pointer}
-.route strong,.story strong{display:block;margin-bottom:3px}.emoji{font-size:26px;float:left;margin-right:12px}
-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(700px,calc(100% - 28px));display:grid;grid-template-columns:repeat(4,1fr);background:#0d0c10;border:1px solid #39323f;border-radius:20px 20px 0 0;padding:8px;z-index:10}
-nav button{background:transparent;padding:9px 4px;font-size:12px}.active{background:#211b35!important}
-.gamebox,.storybox,.parentbox{border:1px solid #39323f;border-radius:20px;background:#100e12;padding:20px}
-.question{font-size:24px;font-weight:900;text-align:center;margin:15px 0 20px}.answers{display:grid;grid-template-columns:1fr 1fr;gap:12px}.answer{min-height:80px;font-size:20px;background:#18151c;border:1px solid #403a48}.feedback{text-align:center;min-height:35px;margin-top:15px;font-weight:800}
-.back{background:#201b26;margin-bottom:12px}.bigemoji{text-align:center;font-size:70px;margin:8px}.progress{height:8px;background:#29242e;border-radius:9px;overflow:hidden}.progress i{display:block;height:100%;background:#8d76ff}
-.list{display:grid;gap:10px}.stat{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat .card b{font-size:25px;display:block}
-.pin{max-width:300px;margin:30px auto;text-align:center}.pin input{width:100%;padding:13px;border-radius:12px;border:1px solid #48404f;background:#151218;color:white;text-align:center;font-size:20px}
-.badge{display:inline-block;border-radius:20px;padding:4px 9px;background:#242018;color:#ffd84d;font-size:11px}
-@media(max-width:500px){.app{padding-top:8px}.hero h1{font-size:23px}.answers{grid-template-columns:1fr}.cards{gap:8px}}
+:root{--bg:#070707;--card:#0c0c0e;--line:#2b2830;--text:#f7f4fb;--muted:#aaa4b3;--accent:#5145c8;--accent2:#7669ed;--gold:#ffd52e}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.app{max-width:560px;margin:auto;min-height:100vh;padding:18px 16px 92px}
+.top{display:flex;justify-content:space-between;align-items:center;font-weight:800;margin:4px 2px 18px}
+.brand{font-size:16px}.score{border:1px solid #37333f;border-radius:18px;padding:6px 10px;font-size:13px}
+.hero{background:linear-gradient(145deg,#3c315f,#29224b);border:1px solid #63558a;border-radius:18px;padding:18px;margin-bottom:10px}
+.kicker{font-size:11px;color:#c9c1d8}.hero h1{font-size:22px;margin:4px 0}.hero p{font-size:12px;color:#d4cede;margin:0 0 12px}
+button{font:inherit;color:inherit;border:0;cursor:pointer}
+.primary{width:100%;background:#3e36a4;border-radius:12px;padding:11px;font-weight:800}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0 16px}.stat{background:#050505;border:1px solid #2c2a30;border-radius:14px;padding:11px}.stat b{font-size:18px;display:block}.stat span{font-size:10px;color:var(--muted)}
+.section-title{display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:13px;margin:15px 2px 8px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.game{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:14px;min-height:110px;text-align:left}.game .ico{font-size:27px}.game b{display:block;margin-top:8px}.game small{color:var(--muted);font-size:10px}.tag{display:inline-block;margin-top:7px;padding:3px 7px;border-radius:8px;background:#3a3310;color:#ffe875;font-size:9px}
+.nav{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);width:min(520px,calc(100% - 32px));display:grid;grid-template-columns:repeat(5,1fr);gap:3px;background:#08080aee;border:1px solid #29262d;border-radius:18px;padding:5px;backdrop-filter:blur(12px);z-index:20}.nav button{background:transparent;padding:8px 3px;border-radius:12px;font-size:10px}.nav button.active{background:#211c35}.nav span{display:block;font-size:17px}
+.screen{display:none}.screen.active{display:block}
+.back{background:#18161c;border:1px solid #34303a;border-radius:10px;padding:8px 12px;margin-bottom:12px}
+.playbox{background:#0b0b0d;border:1px solid var(--line);border-radius:18px;padding:20px;text-align:center}.question{font-size:18px;font-weight:800;margin:8px 0 18px}.visual{font-size:62px;margin:8px}.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}.choice{background:#111116;border:1px solid #38343d;border-radius:14px;padding:14px;font-weight:700;min-height:58px}.choice.correct{background:#174a2b;border-color:#35bd6c}.choice.wrong{background:#542326;border-color:#e2636d}.progress{height:7px;background:#24212a;border-radius:8px;overflow:hidden;margin:10px 0 18px}.progress i{display:block;height:100%;background:var(--accent2);width:0}
+.message{min-height:22px;margin:12px 0;font-weight:800}.gold{color:var(--gold)}
+.list{display:grid;gap:9px}.story{border:1px solid var(--line);border-radius:15px;padding:14px;background:#0b0b0d}.story b{font-size:14px}.story small{display:block;color:var(--muted);margin-top:4px}
+.profile{background:#0b0b0d;border:1px solid var(--line);border-radius:15px;padding:16px}.bar{height:8px;background:#27232d;border-radius:8px;overflow:hidden}.bar i{display:block;width:8%;height:100%;background:var(--accent2)}
+@media(min-width:700px){.app{padding-top:30px}.grid{gap:10px}}
 </style>
 </head>
 <body>
-<div id="app" class="app"></div>
-<nav id="nav"></nav>
+<div class="app">
+<header class="top"><div class="brand">🚀 Minik Kaşifler</div><div class="score">⭐ <b id="totalStars">0</b></div></header>
+
+<section id="home" class="screen active">
+<div class="hero"><div class="kicker">2–8 yaş · Güvenli keşif dünyası</div><h1>Keşfet · Öğren · Eğlen!</h1><p>Her gün küçük bir görev, eğlenceli oyun ve sıcak bir hikâye.</p><button class="primary" onclick="startRoute()">⭐ Bugünün keşfine başla</button></div>
+<div class="stats"><div class="stat"><b id="stars1">0</b><span>Topladığın yıldız</span></div><div class="stat"><b id="done1">0</b><span>Tamamlanan keşif</span></div></div>
+<div class="section-title">🎯 Bugünün rotası <small>10–15 dk</small></div>
+<button class="game" style="width:100%" onclick="openGame(0)"><span class="ico">🌈</span><b>Renkleri Keşfet</b><small>3 kısa soru + mini görev</small></button>
+<div class="section-title">📖 Yeni hikâye</div>
+<button class="story" style="width:100%;text-align:left" onclick="showTab('stories')">⭐ <b>Minik Kaşif ve Kayıp Yıldız</b><small>Sesli hikâye · 4–6 yaş · 4 dk</small></button>
+</section>
+
+<section id="games" class="screen">
+<div class="section-title">🎮 20 Mini Oyun <span style="color:#aaa">Doğru cevap = ⭐</span></div>
+<div id="gameGrid" class="grid"></div>
+</section>
+
+<section id="stories" class="screen">
+<div class="section-title">📚 Hikâyeler <small>Oku veya dinle</small></div>
+<div class="list">
+<div class="story"><b>⭐ Minik Kaşif ve Kayıp Yıldız</b><small>4–6 yaş · 4 dk</small></div>
+<div class="story"><b>🌈 Gökkuşağının Sırrı</b><small>3–6 yaş · 3 dk</small></div>
+<div class="story"><b>🐰 Cesur Tavşan Lila</b><small>4–7 yaş · 4 dk</small></div>
+<div class="story"><b>🌳 Ormandaki Minik Dost</b><small>3–7 yaş · 4 dk</small></div>
+<div class="story"><b>🚀 Ay'a Yolculuk</b><small>5–8 yaş · 5 dk</small></div>
+</div>
+</section>
+
+<section id="profile" class="screen">
+<div class="section-title">👧 Profiller</div>
+<div class="profile"><b>Minik Kaşif</b><p style="color:#aaa;font-size:12px">Toplam yıldız: <span id="pStars">0</span></p><div class="bar"><i id="bar"></i></div><p style="color:#aaa;font-size:11px">20 oyunun tamamını keşfet!</p></div>
+</section>
+
+<section id="parent" class="screen">
+<div class="section-title">👨‍👩‍👧 Ebeveyn Alanı</div>
+<div class="profile"><b>Bugünkü kullanım</b><h2>1 dk</h2><small style="color:#aaa">Önerilen günlük süre: 20 dk</small><div class="stats"><div class="stat"><b id="pStars2">0</b><span>⭐ Yıldız</span></div><div class="stat"><b id="pDone">0</b><span>🎯 Keşif</span></div></div><p style="color:#aaa;font-size:11px">İlerleme bu telefonda saklanır. İnternet bağlantısı kesilse bile yıldızlar kaybolmaz.</p><button class="back" onclick="resetProgress()">İlerlemeyi sıfırla</button></div>
+</section>
+
+<section id="play" class="screen">
+<button class="back" onclick="showTab('games')">← Oyunlara dön</button>
+<div class="playbox"><div id="playTitle"></div><div class="progress"><i id="prog"></i></div><div class="visual" id="visual">🌈</div><div class="question" id="question"></div><div class="choices" id="choices"></div><div class="message" id="message"></div></div>
+</section>
+</div>
+
+<nav class="nav">
+<button onclick="showTab('home')" data-tab="home"><span>🏠</span>Ana Sayfa</button>
+<button onclick="showTab('games')" data-tab="games"><span>🎮</span>Oyunlar</button>
+<button onclick="showTab('stories')" data-tab="stories"><span>📚</span>Hikâyeler</button>
+<button onclick="showTab('profile')" data-tab="profile"><span>👧</span>Profiller</button>
+<button onclick="showTab('parent')" data-tab="parent"><span>👨‍👩‍👧</span>Ebeveyn</button>
+</nav>
+
 <script>
-const KEY="minikKasiflerV4";
-let state=JSON.parse(localStorage.getItem(KEY)||'{"stars":0,"completed":0,"minutes":0,"games":0,"story":0,"profile":"Belinay","profiles":["Belinay","Hazal","Elisa","Nare"],"badges":[]}');
-const save=()=>localStorage.setItem(KEY,JSON.stringify(state));
-const app=document.getElementById("app"), nav=document.getElementById("nav");
 const games=[
-{id:"color",icon:"🎨",name:"Rengi Bul",desc:"Doğru rengi seç.",q:"Hangisi kırmızı?",a:["🔴","🔵","🟢","🟡"],ok:0},
-{id:"number",icon:"🔢",name:"Sayıyı Bul",desc:"Kaç tane var?",q:"🍎🍎🍎 kaç tane?",a:["2","3","4","5"],ok:1},
-{id:"shape",icon:"🔷",name:"Şekli Bul",desc:"Doğru şekli seç.",q:"Hangisi üçgen?",a:["🔵","🔺","🟩","⭐"],ok:1},
-{id:"animal",icon:"🐾",name:"Hayvanı Bul",desc:"Doğru hayvanı seç.",q:"Hangisi bir kedi?",a:["🐶","🐱","🐰","🦁"],ok:1},
-{id:"fruit",icon:"🍎",name:"Meyveleri Say",desc:"Meyveleri say.",q:"🍎🍐🍎🍌 kaç meyve?",a:["2","3","4","5"],ok:2},
-{id:"opposite",icon:"↕️",name:"Zıt Kavramlar",desc:"Büyük-küçük, uzun-kısa.",q:"Hangisi büyük?",a:["🐭","🐘","🐜","🐞"],ok:1},
-{id:"color2",icon:"🌈",name:"Renk Eşleştir",desc:"Aynı rengi bul.",q:"🟢 ile aynı olan hangisi?",a:["🔴","🟢","🔵","🟡"],ok:1},
-{id:"memory",icon:"🧠",name:"Hafıza Kartları",desc:"Doğru çifti bul.",q:"Hangisi elma?",a:["🍎","🐶","🚗","⭐"],ok:0},
-{id:"vehicle",icon:"🚗",name:"Taşıtı Bul",desc:"Taşıtları tanı.",q:"Hangisi bir taşıt?",a:["🚗","🍎","🐱","🌳"],ok:0},
-{id:"nature",icon:"🌳",name:"Doğayı Bul",desc:"Doğadaki şeyi seç.",q:"Hangisi doğada yetişir?",a:["🌳","📱","🚲","🧸"],ok:0},
-{id:"food",icon:"🥕",name:"Sağlıklı Seç",desc:"Sağlıklı yiyeceği bul.",q:"Hangisi sebzedir?",a:["🍭","🥕","🍫","🍪"],ok:1},
-{id:"animalhome",icon:"🏠",name:"Hayvanın Evi",desc:"Hayvanı yuvasıyla eşleştir.",q:"Kuş nerede yaşar?",a:["🪹","🚗","🛁","🎒"],ok:0},
-{id:"countstars",icon:"⭐",name:"Yıldızları Say",desc:"Yıldızları say.",q:"⭐ ⭐ ⭐ ⭐ kaç yıldız?",a:["2","3","4","5"],ok:2},
-{id:"weather",icon:"☀️",name:"Hava Durumu",desc:"Havayı tanı.",q:"Yağmur yağarken hangisini kullanırız?",a:["☂️","🕶️","🏖️","🎈"],ok:0},
-{id:"letters",icon:"🔤",name:"Harf Avı",desc:"Doğru harfi bul.",q:"ELMA kelimesi hangi harfle başlar?",a:["A","E","M","L"],ok:1},
-{id:"colors3",icon:"🖍️",name:"Renk Karıştır",desc:"Renkleri öğren.",q:"Sarı ile mavi karışınca hangi renk oluşur?",a:["Yeşil","Pembe","Turuncu","Mor"],ok:0},
-{id:"seasons",icon:"🍂",name:"Mevsimi Bul",desc:"Mevsimleri öğren.",q:"Kar genellikle hangi mevsimde yağar?",a:["Yaz","Kış","İlkbahar","Sonbahar"],ok:1},
-{id:"body",icon:"👀",name:"Vücudumu Tanıyorum",desc:"Vücut bölümlerini öğren.",q:"Görmek için hangisini kullanırız?",a:["👂","👀","👃","🖐️"],ok:1},
-{id:"logic",icon:"🧩",name:"Hangisi Farklı?",desc:"Farklı olanı bul.",q:"Hangisi diğerlerinden farklı?",a:["🍎","🍐","🍌","🚗"],ok:3},
-{id:"direction",icon:"⬆️",name:"Yönleri Öğren",desc:"Yönleri tanı.",q:"Yukarıyı gösteren hangisi?",a:["⬇️","⬅️","⬆️","➡️"],ok:2}
+["🎨","Rengi Bul","Doğru rengi seç.",[
+["Kırmızı elmayı bul",["🍎","🍌","🥦"],0],["Mavi olanı bul",["🔵","🟡","🔴"],0],["Sarı olanı bul",["🟢","🟡","🔵"],1]]],
+["🔢","Sayıyı Bul","Kaç tane var?",[
+["Kaç elma var? 🍎🍎🍎",["2","3","4"],1],["Kaç yıldız var? ⭐⭐⭐⭐",["3","4","5"],1],["Hangisi 5?",["3","5","7"],1]]],
+["🔷","Şekli Bul","Doğru şekli seç.",[
+["Mavi kareyi bul",["🔵","🔷","🔺"],1],["Üçgen hangisi?",["⬜","🔺","⚪"],1],["Daire hangisi?",["🔺","⬜","⚪"],2]]],
+["🐾","Hayvanı Bul","Sesinden tanı.",[
+["Hav hav! 🐶",["🐱","🐶","🐮"],1],["Miyav! 🐱",["🐱","🐰","🐸"],0],["Möö! 🐮",["🐷","🐮","🐔"],1]]],
+["🍎","Meyveleri Say","Kaç meyve var?",[
+["🍎🍎 kaç tane?",["1","2","3"],1],["🍌🍌🍌 kaç tane?",["2","3","4"],1],["🍓🍓🍓🍓 kaç tane?",["3","4","5"],1]]],
+["↕️","Zıt Kavramlar","Büyüğü ve küçüğü bul.",[
+["Büyük olan hangisi?",["🐘","🐭"],0],["Uzun olan hangisi?",["📏","🧷"],0],["Sıcak olan hangisi?",["☀️","❄️"],0]]],
+["☀️","Havayı Bul","Güneşli olanı seç.",[
+["Güneşli hava hangisi?",["☀️","🌧️","❄️"],0],["Yağmurlu hava?",["☀️","🌧️","🌈"],1],["Karlı hava?",["🌧️","❄️","☀️"],1]]],
+["🥕","Sağlıklı Besin","Doğru yiyeceği seç.",[
+["Hangisi sebze?",["🥕","🍭","🍪"],0],["Hangisi meyve?",["🍎","🍟","🍬"],0],["Hangisi süt ürünü?",["🥛","🍕","🍫"],0]]],
+["🚗","Taşıtı Bul","Karada giden hangisi?",[
+["Karada gider?",["🚗","✈️","🚢"],0],["Gökyüzünde gider?",["🚲","✈️","🚤"],1],["Denizde gider?",["🚢","🚗","🚌"],0]]],
+["🌳","Doğayı Tanı","Ağacı hangisi?",[
+["Ağaç hangisi?",["🌳","🏠","🚗"],0],["Çiçek hangisi?",["🌸","🪨","☁️"],0],["Dağ hangisi?",["🏔️","🏠","🌊"],0]]],
+["🔢","Büyük Sayıyı Bul","Hangisi daha büyük?",[
+["3 mü büyük, 7 mi?",["3","7"],1],["8 mi büyük, 5 mi?",["8","5"],0],["4 mü büyük, 9 mu?",["4","9"],1]]],
+["🔺","Eksik Şekli Bul","Diziyi tamamla.",[
+["🔵 🔵 🔴 🔵 🔵 ?",["🔴","🟢","🟡"],0],["🔺 ⚪ 🔺 ⚪ ?",["⚪","🔺","⬜"],1],["⭐ ❤️ ⭐ ❤️ ?",["⭐","❤️","🌙"],0]]],
+["🎨","Renk Eşleştir","Aynı rengi bul.",[
+["🔴 ile aynı renk?",["🔵","🔴","🟢"],1],["🟡 ile aynı renk?",["🟣","🟢","🟡"],2],["🔵 ile aynı renk?",["🟠","🔵","🔴"],1]]],
+["🧩","Hafıza Kartları","Aynı çifti bul.",[
+["🍎 ile aynı?",["🍌","🍎","🍇"],1],["🐶 ile aynı?",["🐱","🐶","🐰"],1],["⭐ ile aynı?",["🌙","⭐","☀️"],1]]],
+["🔊","Hayvanın Sesini Bul","Sesi çıkan hayvanı seç.",[
+["Cik cik! 🐦",["🐦","🐮","🐴"],0],["İhii! 🐴",["🐷","🐴","🐶"],1],["Möö! 🐮",["🐱","🐮","🐦"],1]]],
+["🍓","Meyveyi Tanı","Doğru meyveyi seç.",[
+["Kırmızı ve yuvarlak",["🍎","🥕","🥒"],0],["Sarı ve uzun",["🍇","🍌","🍉"],1],["Turuncu ve yuvarlak",["🍊","🍓","🥝"],0]]],
+["🔤","Harf Bul","Gösterilen harfi bul.",[
+["A harfini bul",["A","B","C"],0],["M harfini bul",["N","M","K"],1],["S harfini bul",["R","T","S"],2]]],
+["🏠","Nerede Yaşar?","Hayvanı yuvasıyla eşleştir.",[
+["🐦 nerede yaşar?",["🌳","🌊","🏠"],0],["🐟 nerede yaşar?",["🌳","🌊","🏔️"],1],["🐰 nerede yaşar?",["🕳️","🌊","☁️"],0]]],
+["🍂","Mevsimi Bul","Resme uygun mevsimi seç.",[
+["❄️ hangi mevsim?",["Yaz","Kış","İlkbahar"],1],["🌸 hangi mevsim?",["İlkbahar","Kış","Sonbahar"],0],["🍂 hangi mevsim?",["Yaz","İlkbahar","Sonbahar"],2]]],
+["🧠","Hangisi Farklı?","Farklı olanı bul.",[
+["Hangisi farklı?",["🍎","🍎","🚗"],2],["Hangisi farklı?",["🐶","🐱","🍌"],2],["Hangisi farklı?",["🔵","🔵","⭐"],2]]]
 ];
-const stories=[
- {icon:"⭐",name:"Minik Kaşif ve Kayıp Yıldız",age:"4–6 yaş",text:"Minik Kaşif gökyüzünde parlayan küçük bir yıldız gördü. Yıldız yolunu kaybetmişti. Kaşif onu gökyüzüne geri götürmek için renkli bir maceraya çıktı. Önce gökkuşağının altından geçti, sonra ay ışığını takip etti. Yıldız yerine kavuşunca gökyüzü ışıl ışıl oldu. Minik Kaşif gülümsedi: Her küçük yardım büyük bir mutluluk getirir."},
- {icon:"🌈",name:"Gökkuşağının Sırrı",age:"3–6 yaş",text:"Yağmurdan sonra gökyüzünde rengârenk bir gökkuşağı belirdi. Minik Kaşif renkleri tek tek saydı: kırmızı, turuncu, sarı, yeşil, mavi, lacivert ve mor. Gökkuşağı ona doğadaki her rengin özel olduğunu öğretti."},
- {icon:"🐰",name:"Cesur Tavşan Lila",age:"4–7 yaş",text:"Lila ormanda tek başına yürürken küçük bir ses duydu. Korkmak yerine derin bir nefes aldı ve sese doğru ilerledi. Minik bir kuş yuvasından düşmüştü. Lila yardım çağırdı ve kuş güvenle yuvasına döndü. Cesaret, korkmamak değil; doğru şeyi yapmaya çalışmaktır."}
-];
-function layout(title,content){app.innerHTML=`<header><span>🚀 Minik Kaşifler</span><span class="stars">⭐ ${state.stars}</span></header>${content}`;nav.innerHTML=`
-<button onclick="home()">🏠<br>Ana Sayfa</button><button onclick="gamesPage()">🎮<br>Oyunlar</button>
-<button onclick="storiesPage()">📚<br>Hikâyeler</button><button onclick="parentPage()">👨‍👩‍👧<br>Ebeveyn</button>`}
-function home(){layout("",`
-<section class="hero"><small>2–8 yaş · Güvenli keşif dünyası</small><h1>Keşfet · Öğren · Eğlen!</h1><p>Her gün küçük bir görev, eğlenceli bir oyun ve sıcacık bir hikâye.</p><button class="primary" onclick="daily()">⭐ Bugünün keşfine başla</button></section>
-<div class="cards"><div class="card"><b>${state.stars}</b><span class="muted">Topladığın yıldız</span></div><div class="card"><b>${state.completed}</b><span class="muted">Tamamlanan keşif</span></div></div>
-<div class="route" onclick="profilePage()"><span class="emoji">👧</span><strong>${state.profile} ile devam et</strong><span class="muted">Çocuk profilini değiştir</span></div><div class="section">🎯 Bugünün rotası <span class="muted">10–15 dk</span></div>
-<div class="route" onclick="play('color')"><span class="emoji">🌈</span><strong>Renkleri Keşfet</strong><span class="muted">3 kısa soru + mini görev</span></div>
-<div class="section">📖 Yeni hikâye <span class="badge">Tümü</span></div>
-<div class="story" onclick="story(0)"><span class="emoji">⭐</span><strong>Minik Kaşif ve Kayıp Yıldız</strong><span class="muted">Sesli hikâye · 4–6 yaş · 4 dk</span></div>`)}
-function gamesPage(){layout("",`<div class="section">🎮 Oyunlar <span class="muted">20 Mini Oyun · Doğru cevap = ⭐</span></div><div class="cards">${games.map((g,n)=>`<div class="card" onclick="play('${g.id}')"><span class="badge">${n+1}/20</span><div class="bigemoji">${g.icon}</div><b>${g.name}</b><span class="muted">${g.desc}</span><br><span class="badge">Kolay</span></div>`).join("")}</div>`)}
-function play(id){
- let game=games.find(x=>x.id===id), i=0, score=0;
- const variants={
-  color:[["Hangisi sarı?",["🔴","🔵","🟢","🟡"],3],["Hangisi mavi?",["🟢","🔵","🟡","🔴"],1]],
-  number:[["🍎🍎 kaç tane?",["1","2","3","4"],1],["🍓🍓🍓🍓 kaç tane?",["2","3","4","5"],2]],
-  shape:[["Hangisi daire?",["🔺","🟩","🔵","⭐"],2],["Hangisi kare?",["🔵","🔺","🟩","⭐"],2]],
-  animal:[["Hangisi tavşan?",["🐶","🐱","🐰","🦁"],2],["Hangisi köpek?",["🐶","🐱","🐰","🐭"],0]],
-  fruit:[["🍎🍎🍐 kaç meyve?",["2","3","4","5"],1],["🍌🍌🍎🍐🍊 kaç meyve?",["3","4","5","6"],2]]
- };
- const getQ=()=>{let v=variants[game.id]; if(v && i>0){let x=v[i-1]; return {q:x[0],a:x[1],ok:x[2]};} return {q:game.q,a:game.a,ok:game.ok};};
- function render(){
-  const x=getQ();
-  app.innerHTML=`<header><span>🚀 Minik Kaşifler</span><span class="stars">⭐ ${state.stars}</span></header>
-  <button class="back" onclick="gamesPage()">← Oyunlara dön</button>
-  <div class="gamebox"><div class="muted">Soru ${i+1} / 3</div>
-  <div class="progress"><i style="width:${(i/3)*100}%"></i></div>
-  <div class="bigemoji">${game.icon}</div><div class="question">${x.q}</div>
-  <div class="answers">${x.a.map((a,n)=>`<button class="answer" onclick="answer(${n})">${a}</button>`).join("")}</div>
-  <div id="feedback" class="feedback"></div></div>`;
- }
- window.answer=(n)=>{
-  const x=getQ(), f=document.getElementById("feedback");
-  if(n===x.ok){score++;state.stars++;f.textContent="🎉 Harika! +1 yıldız";f.style.color="#ffd84d";}
-  else f.textContent="💡 Bir daha düşün!";
-  save();
-  setTimeout(()=>{i++; if(i>=3){state.completed++;state.games++;addBadge();save();finish(score)} else render();},650);
- };
- function addBadge(){
-   if(score===3 && !state.badges.includes("🏆 Usta Kaşif")) state.badges.push("🏆 Usta Kaşif");
-   if(state.completed>=10 && !state.badges.includes("🌟 10 Keşif")) state.badges.push("🌟 10 Keşif");
- }
- render();
+
+let state=JSON.parse(localStorage.getItem("mk20")||'{"stars":0,"done":0,"games":[]}');
+let current=null, qi=0, roundScore=0;
+
+const $=id=>document.getElementById(id);
+function save(){localStorage.setItem("mk20",JSON.stringify(state));updateUI()}
+function updateUI(){
+ ["totalStars","stars1","pStars","pStars2"].forEach(id=>$(id).textContent=state.stars);
+ ["done1","pDone"].forEach(id=>$(id).textContent=state.done);
+ $("bar").style.width=Math.min(100,state.done/20*100)+"%";
 }
-function finish(score){
- app.innerHTML=`<header><span>🚀 Minik Kaşifler</span><span class="stars">⭐ ${state.stars}</span></header>
- <div class="gamebox" style="text-align:center"><div class="bigemoji">🏆</div>
- <h1>Harika iş, ${state.profile}!</h1><p>${score}/3 doğru cevap verdin.</p>
- <p>⭐ ${score} yıldız kazandın!</p>
- <p>${score===3?"🎖️ Mükemmel!":"👏 Bir sonraki oyunda daha da iyisini yapabilirsin."}</p>
- <button class="primary" onclick="gamesPage()">🎮 Başka oyun oyna</button><br><br><button onclick="home()">🏠 Ana Sayfa</button></div>`;
+function showTab(tab){
+ document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));
+ $(tab).classList.add("active");
+ document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));
+ if(tab==="games") renderGames();
+ updateUI(); window.scrollTo({top:0,behavior:"smooth"});
 }
-function storiesPage(){layout("",`<div class="section">📚 Hikâyeler <span class="muted">Oku veya dinle</span></div><div class="list">${stories.map((s,i)=>`<div class="story" onclick="story(${i})"><span class="emoji">${s.icon}</span><strong>${s.name}</strong><span class="muted">${s.age} · 4 dk</span></div>`).join("")}</div>`)}
-function story(i){let s=stories[i];layout("",`<button class="back" onclick="storiesPage()">← Hikâyelere dön</button><div class="storybox"><div class="bigemoji">${s.icon}</div><h2>${s.name}</h2><span class="badge">${s.age}</span><p style="font-size:18px;line-height:1.7">${s.text}</p><button class="primary" onclick="speakStory()">🔊 Sesli dinle</button><br><br><button onclick="finishStory()">⭐ Hikâyeyi tamamladım</button></div>`);
-window.speakStory=()=>{if("speechSynthesis" in window){speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(s.text);u.lang="tr-TR";u.rate=.9;speechSynthesis.speak(u)}};
-window.finishStory=()=>{state.stars++;state.story++;state.completed++;save();alert("⭐ Hikâye tamamlandı! 1 yıldız kazandın.");storiesPage()}}
-function profilePage(){
- layout("",`<div class="section">👧 Çocuk Profili</div>
- <div class="parentbox"><p class="muted">Oyuncuyu seç:</p>
- <div class="cards">${state.profiles.map((p,i)=>`<div class="card" onclick="selectProfile('${p}')"><div class="bigemoji">${["👧","👧","👧","👶"][i]}</div><b>${p}</b><span class="muted">${p===state.profile?"⭐ Aktif profil":""}</span></div>`).join("")}</div>
- <br><button onclick="parentPage()">👨‍👩‍👧 Ebeveyn alanı</button></div>`);
+function renderGames(){
+ $("gameGrid").innerHTML=games.map((g,i)=>`<button class="game" onclick="openGame(${i})"><span class="ico">${g[0]}</span><b>${i+1}. ${g[1]}</b><small>${g[2]}</small><span class="tag">${state.games.includes(i)?"✓ Tamamlandı":"Yeni"}</span></button>`).join("");
 }
-function selectProfile(p){state.profile=p;save();home();}
-function parentPage(){let ok=sessionStorage.getItem("parentOK");if(!ok){layout("",`<div class="parentbox pin"><h2>🔒 Ebeveyn Alanı</h2><p class="muted">Devam etmek için PIN girin.</p><input id="pin" type="password" inputmode="numeric" maxlength="4" placeholder="••••"><br><br><button class="primary" onclick="checkPin()">Giriş</button><p class="muted">Varsayılan PIN: 1234</p></div>`);return}
-layout("",`<div class="section">👨‍👩‍👧 Ebeveyn Alanı</div><div class="parentbox"><p class="muted">Bugünkü kullanım</p><h2>${state.minutes} dk</h2><div class="progress"><i style="width:${Math.min(100,state.minutes/20*100)}%"></i></div><p class="muted">Önerilen günlük süre: 20 dk</p><div class="stat"><div class="card">⭐<b>${state.stars}</b><span class="muted">Yıldız</span></div><div class="card">🎯<b>${state.completed}</b><span class="muted">Keşif</span></div></div><p class="muted">Aktif profil: ${state.profile}</p><p>${state.badges.length?state.badges.join(" · "):"Henüz rozet yok"}</p><br><button onclick="profilePage()">👧 Profili değiştir</button><br><br><button onclick="resetProgress()">İlerlemeyi sıfırla</button></div>`)}
-function checkPin(){if(document.getElementById("pin").value==="1234"){sessionStorage.setItem("parentOK","1");parentPage()}else alert("PIN yanlış.")}function resetProgress(){if(confirm("Tüm ilerleme silinsin mi?")){state={stars:0,completed:0,minutes:0,games:0,story:0,profile:"Belinay",profiles:["Belinay","Hazal","Elisa","Nare"],badges:[]};save();parentPage()}}
-function daily(){play("color")}
-home();
+function startRoute(){openGame(0)}
+function openGame(i){
+ current=i;qi=0;roundScore=0;showTab("play");renderQuestion();
+}
+function renderQuestion(){
+ const g=games[current], q=g[3][qi];
+ $("playTitle").innerHTML=`<b>${g[0]} ${g[1]}</b><span style="color:#aaa;font-size:11px"> · ${qi+1}/3</span>`;
+ $("prog").style.width=((qi)/3*100)+"%";
+ $("visual").textContent=q[1].filter(x=>/^[^\p{L}\p{N}]+$/u.test(x)).join(" ") || g[0];
+ $("question").textContent=q[0];
+ $("message").textContent="";
+ $("choices").innerHTML=q[1].map((c,n)=>`<button class="choice" onclick="answer(${n})">${c}</button>`).join("");
+}
+function answer(n){
+ const q=games[current][3][qi], btns=[...document.querySelectorAll(".choice")];
+ btns.forEach(b=>b.disabled=true);
+ if(n===q[2]){btns[n].classList.add("correct");roundScore++;$("message").innerHTML='<span class="gold">⭐ Harika! Doğru cevap!</span>'}
+ else{btns[n].classList.add("wrong");btns[q[2]].classList.add("correct");$("message").textContent="Bir daha deneyelim!";}
+ setTimeout(()=>{
+   qi++;
+   if(qi<3) renderQuestion(); else finishGame();
+ },650);
+}
+function finishGame(){
+ state.stars+=roundScore;
+ if(!state.games.includes(current)){state.games.push(current);state.done++}
+ save();
+ $("playTitle").innerHTML=`<b>🎉 Oyun tamamlandı!</b>`;
+ $("prog").style.width="100%";$("visual").textContent=roundScore===3?"🏆":"⭐";
+ $("question").innerHTML=`${roundScore}/3 doğru cevap<br><span class="gold">+${roundScore} yıldız</span>`;
+ $("choices").innerHTML=`<button class="primary" onclick="showTab('games')">🎮 Diğer oyunlara geç</button>`;
+ $("message").textContent="Çok güzel! Yeni bir keşfe hazır mısın?";
+}
+function resetProgress(){if(confirm("İlerleme sıfırlansın mı?")){state={stars:0,done:0,games:[]};save();renderGames()}}
+updateUI();renderGames();
+if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(()=>{});
 </script>
-</body></html>
+</body>
+</html>
