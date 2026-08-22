@@ -1,87 +1,11 @@
-<!doctype html>
-<html lang="tr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#5369B8">
-<meta name="description" content="Minik Kaşifler – Keşfet, Öğren, Eğlen!">
-<link rel="manifest" href="manifest.json">
-<link rel="icon" href="icon-192.png">
-<title>Minik Kaşifler</title>
-<style>
-:root{--primary:#5369B8;--accent:#E86B72;--success:#2E8B72;--bg:#F8F5EE;--card:#fff;--text:#25314A;--muted:#718096;--soft:#E9EEFF}
-*{box-sizing:border-box} body{margin:0;font-family:Nunito,system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text)}
-.app{max-width:520px;margin:auto;min-height:100vh;background:var(--bg);padding-bottom:86px}
-header{padding:18px 18px 10px;display:flex;align-items:center;justify-content:space-between}
-.brand{font-weight:900;font-size:23px}.brand span{color:var(--primary)}
-.profile{width:42px;height:42px;border-radius:50%;background:#fff;border:2px solid #e3e6ef;display:grid;place-items:center}
-main{padding:8px 16px}.hero{background:linear-gradient(135deg,#e8edff,#fff1ea);border-radius:28px;padding:20px;position:relative;overflow:hidden}
-.hero h1{margin:0 0 7px;font-size:28px}.hero p{margin:0;color:#5f6b80}.pill{display:inline-block;background:#fff;border-radius:999px;padding:7px 11px;font-size:12px;margin-top:12px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
-.card{background:var(--card);border:1px solid #ececf2;border-radius:22px;padding:15px;box-shadow:0 5px 18px #26334b0b}
-.card h3{margin:8px 0 4px}.card p{margin:0;color:var(--muted);font-size:13px}
-.icon{font-size:30px}.section-title{display:flex;justify-content:space-between;align-items:center;margin:22px 3px 10px}.section-title h2{font-size:19px;margin:0}
-button{border:0;border-radius:16px;padding:12px 15px;font-weight:800;background:var(--primary);color:#fff;cursor:pointer}.btn-soft{background:var(--soft);color:var(--primary)}.btn-pink{background:#E86B72}.full{width:100%;margin-top:12px}
-.story{display:flex;gap:12px;align-items:center}.story-art{width:76px;height:76px;border-radius:18px;background:linear-gradient(145deg,#fff1d6,#cbd8ff);display:grid;place-items:center;font-size:36px;flex:none}
-.option{width:100%;text-align:left;margin:7px 0;background:#fff;color:var(--text);border:2px solid #ececf2}.option.correct{border-color:var(--success);background:#edf9f4}.option.wrong{border-color:#E86B72;background:#fff0f1}
-.progress{height:9px;background:#e7e9f0;border-radius:99px;overflow:hidden}.progress>div{height:100%;background:var(--primary);width:40%}
-.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(520px,100%);background:#fff;border-top:1px solid #e8e8ee;display:grid;grid-template-columns:repeat(3,1fr);padding:9px 10px calc(9px + env(safe-area-inset-bottom));z-index:10}
-.nav button{background:transparent;color:#758096;padding:8px}.nav button.active{color:var(--primary);background:#eef1ff}
-.small{font-size:12px;color:var(--muted)} .back{background:transparent;color:var(--primary);padding:4px 0}
-.lock{font-size:12px;color:#9a6b2f;background:#fff4dd;border-radius:12px;padding:8px 10px;display:inline-block}
-.hide{display:none}
-</style>
-</head>
-<body>
-<div class="app">
-<header><div class="brand">🚀 <span>Minik Kaşifler</span></div><div class="profile">⭐</div></header>
-<main id="view"></main>
-<nav class="nav">
-<button id="nHome" onclick="show('home')">🏠<br><span>Ana Sayfa</span></button>
-<button id="nGames" onclick="show('games')">🎮<br><span>Oyunlar</span></button>
-<button id="nStories" onclick="show('stories')">📖<br><span>Hikâyeler</span></button>
-</nav>
-</div>
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#24231e"><link rel="manifest" href="manifest.json"><title>🚀 Minik Kaşifler</title><style>
+*{box-sizing:border-box}body{margin:0;background:#24231e;color:#fff;font-family:system-ui,sans-serif}.app{max-width:390px;margin:auto;min-height:100vh;padding:18px 12px 90px}header{display:flex;justify-content:space-between;font-weight:800;padding:0 8px 12px}.star,.choice,.close{background:#080808;color:#fff;border:1px solid #444;border-radius:12px}.hero,.card{background:#050505;border:1px solid #333;border-radius:18px;padding:15px}.hero{background:linear-gradient(135deg,#202846,#322735)}h1{font-size:21px;margin:8px 0}.muted{color:#aaa;font-size:12px}.primary{width:100%;border:0;border-radius:14px;background:#30429d;color:#fff;font-weight:800;padding:12px;margin-top:10px}.stats,.games,.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}.section{display:flex;justify-content:space-between;margin:18px 2px 8px}.emoji{font-size:27px;background:#20202a;border-radius:12px;padding:10px;display:inline-block}.row{display:flex;align-items:center;gap:12px}.page{display:none}.page.active{display:block}.game{min-height:125px;cursor:pointer}.game h3{margin:7px 0}.game p{font-size:11px;color:#aaa}nav{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);width:min(370px,90vw);background:#050505;padding:7px;border-radius:16px;display:grid;grid-template-columns:repeat(3,1fr)}nav button{background:none;border:0;color:#aaa;padding:8px;font-size:11px}nav .active{background:#292743;color:#b7c0ff;border-radius:10px}.modal{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;padding:15px}.modal.show{display:flex}.panel{background:#24231e;border:1px solid #555;border-radius:20px;padding:18px;width:100%;max-width:390px}.choice{height:90px;font-size:28px}.choice span{display:block;font-size:12px}.close{float:right;padding:6px 10px}
+</style></head><body><div class="app"><header><span>🚀 Minik Kaşifler</span><span id="top">⭐ 0</span></header>
+<section id="home" class="page active"><div class="hero"><small>2–8 yaş · Güvenli keşif dünyası</small><h1>Keşfet · Öğren · Eğlen!</h1><div class="muted">Her gün küçük bir görev, yeni bir hikâye ve eğlenceli bir oyun.</div><button class="primary" onclick="page('games')">⭐ Bugünün keşfine başla</button></div><div class="stats" style="margin-top:12px"><div class="card"><b id="stars">0</b><div class="muted">Topladığın yıldız</div></div><div class="card"><b id="tasks">0</b><div class="muted">Tamamlanan keşif</div></div></div><div class="section"><b>Bugünün rotası</b><small>10–15 dk</small></div><div class="card" onclick="game('colors')"><div class="row"><span class="emoji">🌈</span><div><b>Renkleri Keşfet</b><div class="muted">3 kısa soru + mini görev</div></div></div></div><div class="section"><b>Yeni hikâye</b></div><div class="card"><div class="row"><span class="emoji">⭐</span><div><b>Minik Kaşif ve Kayıp Yıldız</b><div class="muted">Sesli hikâye · 4–6 yaş</div></div></div></div></section>
+<section id="games" class="page"><div class="section"><b>🎮 Oyunlar</b><small>Yıldız kazan!</small></div><div class="games"><div class="card game" onclick="game('colors')"><span class="emoji">🎨</span><h3>Rengi Bul</h3><p>Doğru rengi seç.</p></div><div class="card game" onclick="game('numbers')"><span class="emoji">🔢</span><h3>Sayıyı Bul</h3><p>Kaç tane var?</p></div><div class="card game" onclick="game('shapes')"><span class="emoji">🔷</span><h3>Şekli Bul</h3><p>Doğru şekli seç.</p></div><div class="card game" onclick="game('animals')"><span class="emoji">🐶</span><h3>Hayvanı Bul</h3><p>Hayvanı tanı.</p></div></div></section>
+<section id="stories" class="page"><div class="section"><b>📚 Hikâyeler</b></div><div class="card"><span class="emoji">⭐</span><h3>Minik Kaşif ve Kayıp Yıldız</h3><p class="muted">Hikâye bölümü yakında sesli hale gelecek.</p></div></section></div>
+<nav><button id="nh" class="active" onclick="page('home')">🏠<br>Ana Sayfa</button><button id="ng" onclick="page('games')">🎮<br>Oyunlar</button><button id="ns" onclick="page('stories')">📚<br>Hikâyeler</button></nav>
+<div id="modal" class="modal"><div class="panel"><button class="close" onclick="closeGame()">✕</button><h2 id="title"></h2><div id="content"></div><p id="msg" style="text-align:center;font-weight:800"></p></div></div>
 <script>
-const state={stars:Number(localStorage.getItem('stars')||0),done:Number(localStorage.getItem('done')||0)};
-function save(){localStorage.setItem('stars',state.stars);localStorage.setItem('done',state.done)}
-function show(page){
-  document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
-  ({home:'nHome',games:'nGames',stories:'nStories'}[page] && document.getElementById(({home:'nHome',games:'nGames',stories:'nStories'}[page])).classList.add('active'));
-  if(page==='home') home(); if(page==='games') games(); if(page==='stories') stories();
-}
-function home(){view.innerHTML=`
-<section class="hero"><div class="pill">2–8 yaş • Güvenli keşif dünyası</div>
-<h1>Keşfet • Öğren • Eğlen!</h1><p>Her gün küçük bir görev, yeni bir hikâye ve eğlenceli bir oyun.</p>
-<button class="full" onclick="daily()">⭐ Bugünün keşfine başla</button></section>
-<div class="grid">
-<div class="card"><div class="icon">⭐</div><h3>${state.stars} yıldız</h3><p>Topladığın yıldızlar</p></div>
-<div class="card"><div class="icon">🎯</div><h3>${state.done} görev</h3><p>Tamamlanan keşif</p></div>
-</div>
-<div class="section-title"><h2>Bugünün rotası</h2><span class="small">10–15 dk</span></div>
-<div class="card story"><div class="story-art">🌈</div><div><h3>Renkleri Keşfet</h3><p>3 kısa soru + 1 mini görev</p></div></div>
-<div class="section-title"><h2>Yeni hikâye</h2><button class="btn-soft" onclick="show('stories')">Tümü</button></div>
-<div class="card story" onclick="storyDetail()"><div class="story-art">⭐</div><div><h3>Minik Kaşif ve Kayıp Yıldız</h3><p>Sesli hikâye • 4–6 yaş • 4 dk</p></div></div>
-<div class="card" style="margin-top:12px"><span class="lock">🔒 Ebeveyn alanı</span><p style="margin-top:8px">İlerleme, günlük süre ve içerik ayarları burada olacak.</p></div>`}
-function games(){view.innerHTML=`
-<div class="section-title"><h2>🎮 Oyunlar</h2><span class="small">2–8 yaş</span></div>
-<div class="card"><div class="icon">🎨</div><h3>Renk Avı</h3><p>Doğru rengi bul ve yıldız kazan.</p><button class="full" onclick="colorGame()">Oyna</button></div>
-<div class="card" style="margin-top:12px"><div class="icon">🧠</div><h3>Mini Bilgi</h3><p>Çocuklara uygun 3 kısa soru.</p><button class="full btn-pink" onclick="quiz()">Başla</button></div>
-<div class="card" style="margin-top:12px"><div class="icon">🔢</div><h3>Sayı Kaşifi</h3><p>1’den 10’a kadar eğlenceli sayma.</p><button class="full btn-soft" onclick="countGame()">Başla</button></div>`}
-function stories(){view.innerHTML=`
-<div class="section-title"><h2>📖 Hikâyeler</h2><span class="small">Dinle • Hayal et</span></div>
-<div class="card story"><div class="story-art">⭐</div><div><h3>Minik Kaşif ve Kayıp Yıldız</h3><p>4 dk • 4–6 yaş</p><button style="margin-top:8px" onclick="storyDetail()">Dinle</button></div></div>
-<div class="card story" style="margin-top:12px"><div class="story-art">🚀</div><div><h3>Uzaydaki İlk Macera</h3><p>5 dk • 4–6 yaş</p><button style="margin-top:8px" onclick="spaceStory()">Oku</button></div></div>
-<div class="card story" style="margin-top:12px"><div class="story-art">🌳</div><div><h3>Ormandaki Meraklı Kaşif</h3><p>4 dk • 5–8 yaş</p><button style="margin-top:8px" onclick="forestStory()">Oku</button></div></div>`}
-function daily(){state.stars++;state.done++;save();alert('🎉 Harika! Bugünün keşfini tamamladın. +1 yıldız');home()}
-function colorGame(){view.innerHTML=`<button class="back" onclick="games()">← Oyunlara dön</button><div class="section-title"><h2>🎨 Renk Avı</h2></div><div class="card"><h3>Gökyüzünün rengi hangisi?</h3><button class="option" onclick="answer(this,false)">🟥 Kırmızı</button><button class="option" onclick="answer(this,true)">🟦 Mavi</button><button class="option" onclick="answer(this,false)">🟩 Yeşil</button></div>`}
-function answer(el,ok){el.classList.add(ok?'correct':'wrong');if(ok){state.stars++;save();setTimeout(()=>{alert('⭐ Doğru! +1 yıldız');games()},500)}}
-function quiz(){view.innerHTML=`<button class="back" onclick="games()">← Oyunlara dön</button><div class="section-title"><h2>🧠 Mini Bilgi</h2></div><div class="card"><div class="progress"><div></div></div><h3>Bir ağacın yaprakları genellikle hangi renktir?</h3><button class="option" onclick="answer(this,false)">🟣 Mor</button><button class="option" onclick="answer(this,true)">🟢 Yeşil</button><button class="option" onclick="answer(this,false)">🟠 Turuncu</button></div>`}
-function countGame(){view.innerHTML=`<button class="back" onclick="games()">← Oyunlara dön</button><div class="card"><h2>🔢 Sayı Kaşifi</h2><p>Kaç tane yıldız görüyorsun?</p><div style="font-size:42px;text-align:center;margin:18px">⭐ ⭐ ⭐ ⭐ ⭐</div><button class="option" onclick="answer(this,false)">3</button><button class="option" onclick="answer(this,true)">5</button><button class="option" onclick="answer(this,false)">7</button></div>`}
-function storyDetail(){view.innerHTML=`<button class="back" onclick="stories()">← Hikâyelere dön</button><div class="hero"><div style="font-size:55px">⭐</div><h1>Minik Kaşif ve Kayıp Yıldız</h1><p>Bir gece gökyüzündeki küçük bir yıldız kaybolur. Minik Kaşif, yıldızı bulmak için bulutların, ayın ve renkli ışıkların arasından geçer.</p><button class="full" onclick="daily()">✨ Hikâyeyi tamamla</button></div>`}
-function spaceStory(){view.innerHTML=`<button class="back" onclick="stories()">← Hikâyelere dön</button><div class="hero"><div style="font-size:55px">🚀</div><h1>Uzaydaki İlk Macera</h1><p>Minik Kaşif roketine biner. Ayı, yıldızları ve gezegenleri keşfeder; her durakta yeni bir şey öğrenir.</p><button class="full" onclick="daily()">⭐ Tamamla</button></div>`}
-function forestStory(){view.innerHTML=`<button class="back" onclick="stories()">← Hikâyelere dön</button><div class="hero"><div style="font-size:55px">🌳</div><h1>Ormandaki Meraklı Kaşif</h1><p>Ormanda yürüyen Minik Kaşif, kuşların sesini dinler ve doğadaki renkleri keşfeder.</p><button class="full" onclick="daily()">⭐ Tamamla</button></div>`}
-show('home');
-</script>
-</body>
-</html>
+let s=+localStorage.mkStars||0,t=+localStorage.mkTasks||0;function render(){stars.textContent=s;tasks.textContent=t;top.textContent='⭐ '+s}function win(){s++;t++;localStorage.mkStars=s;localStorage.mkTasks=t;render();msg.textContent='🎉 Doğru! +1 yıldız'}function page(p){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(p).classList.add('active');nh.classList.toggle('active',p==='home');ng.classList.toggle('active',p==='games');ns.classList.toggle('active',p==='stories')}function game(x){modal.classList.add('show');msg.textContent='';let q={colors:['🎨 Rengi Bul','🍓 Elmanın rengi hangisi?',['🟢 Yeşil','🔴 Kırmızı','🔵 Mavi','🟡 Sarı'],1],numbers:['🔢 Sayıyı Bul','🍎🍎🍎 Kaç elma var?',['2','3','4','5'],1],shapes:['🔷 Şekli Bul','⚪ Yuvarlak şekli seç.',['⚪ Daire','🔺 Üçgen','🟥 Kare','⭐ Yıldız'],0],animals:['🐾 Hayvanı Bul','“Hav hav” diyen hangisi?',['🐶 Köpek','🐱 Kedi','🐟 Balık','🐰 Tavşan'],0]}[x];title.textContent=q[0];content.innerHTML='<p>'+q[1]+'</p><div class="choices">'+q[2].map((a,i)=>'<button class="choice" onclick="answer('+i+','+q[3]+')">'+a+'</button>').join('')+'</div>'}function answer(i,ok){if(i===ok)win();else msg.textContent='🙂 Tekrar dene!'}function closeGame(){modal.classList.remove('show')}render();if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js');
+</script></body></html>
